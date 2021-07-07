@@ -1,5 +1,6 @@
 package pages;
 
+import com.sun.istack.internal.NotNull;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -43,6 +44,19 @@ public class BasePage {
     public void pressOnKeyboard(Keys key) {
         Actions action = new Actions(driver);
         action.sendKeys(key).build().perform();
+    }
+
+    public void hoverOnElement(WebElement element) {
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        Actions action = new Actions(driver);
+        action.moveToElement(element).build().perform();
+    }
+
+    public boolean isElementDisplayed(WebElement element) {
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+        return element.isDisplayed();
     }
 
 }

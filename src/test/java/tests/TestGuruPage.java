@@ -1,18 +1,12 @@
 package tests;
 
-import net.bytebuddy.implementation.auxiliary.MethodCallProxy;
 import org.junit.Assert;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.GuruPage;
 import utils.Utils;
-import org.openqa.selenium.JavascriptExecutor;
+
 
 public class TestGuruPage extends Utils {
 
@@ -51,5 +45,16 @@ public class TestGuruPage extends Utils {
         Assert.assertTrue(guruPage.usernameTextExists(expectedBadUsernameText));
         Assert.assertTrue(guruPage.passwordTextExists(expectedBadpasswordText));
     }
-    
+
+    @Test
+    public void goodLoginTest() {
+        guruPage.inputUsername(validUsername);
+        guruPage.inputPassword(validPassword);
+        guruPage.clickOnLoginButton();
+
+
+        Assert.assertTrue(guruPage.isGoToPageSixSuccessful());
+
+    }
+
 }

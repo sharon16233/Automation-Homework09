@@ -25,6 +25,13 @@ public class GuruPage extends BasePage {
     @FindBy(id = "message18")
     WebElement badPasswordText;
 
+    @FindBy(linkText = "SEO")
+    WebElement SEOButton;
+
+    @FindBy(xpath = "//a[contains(text(),'Page-6')]")
+    WebElement pageSixButton;
+
+
     //Methods.
     /****************************************************/
 
@@ -48,6 +55,17 @@ public class GuruPage extends BasePage {
     }
     public boolean passwordTextExists(String expected) {
         return expected.equals(badPasswordText.getText());
+    }
+
+    public boolean isLoginSuccessful() {
+        return true;
+    }
+
+    public boolean isGoToPageSixSuccessful() {
+        clickOnElement(SEOButton);
+        clickOnElement(pageSixButton);
+
+        return driver.getTitle().equals("SEO Demo Page-6");
     }
 
     public GuruPage(WebDriver driver) {
