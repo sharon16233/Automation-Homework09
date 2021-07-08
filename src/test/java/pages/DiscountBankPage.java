@@ -7,12 +7,16 @@ import org.openqa.selenium.support.PageFactory;
 
 public class DiscountBankPage extends BasePage {
 
+    /*************Elements*****************/
+
     @FindBy(css = "[href='/DB/private/credit']")
     WebElement loansButton;
 
     @FindBy(css = "[href='/DB/private/credit/loans/special-loans']")
     WebElement specialLoanOfferButton;
 
+
+    /*************Methods*****************/
 
     public void hoverOnLoans() {
         hoverOnElement(loansButton);
@@ -22,6 +26,7 @@ public class DiscountBankPage extends BasePage {
         return isElementDisplayed(specialLoanOfferButton);
     }
 
+    /*************Constructor*****************/
 
     public DiscountBankPage(WebDriver driver) {
         super(driver);

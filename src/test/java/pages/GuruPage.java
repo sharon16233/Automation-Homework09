@@ -7,8 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class GuruPage extends BasePage {
 
-    // Elements.
-    /****************************************************/
+    /*************Elements*****************/
 
     @FindBy(name = "uid")
     WebElement userNameField;
@@ -31,9 +30,11 @@ public class GuruPage extends BasePage {
     @FindBy(xpath = "//a[contains(text(),'Page-6')]")
     WebElement pageSixButton;
 
+    @FindBy(css = "[class='nav navbar-nav']")
+    WebElement barAfterLogin;
 
-    //Methods.
-    /****************************************************/
+
+    /*************Methods*****************/
 
     public void inputUsername(String username) {
         inputText(userNameField, username);
@@ -57,16 +58,28 @@ public class GuruPage extends BasePage {
         return expected.equals(badPasswordText.getText());
     }
 
+    public boolean isAlertTextCorrect(String alertText) {
+        return alertText.equals(driver.switchTo().alert().getText());
+    }
+
     public boolean isLoginSuccessful() {
-        return true;
+        return isElementDisplayed(barAfterLogin);
+    }
+
+    public void clickOnSEOButton() {
+        clickOnElement(SEOButton);
+    }
+
+    public void clickOnPageSixButton() {
+        clickOnElement(pageSixButton);
     }
 
     public boolean isGoToPageSixSuccessful() {
-        clickOnElement(SEOButton);
-        clickOnElement(pageSixButton);
-
         return driver.getTitle().equals("SEO Demo Page-6");
     }
+
+
+    /*************Constructor*****************/
 
     public GuruPage(WebDriver driver) {
         super(driver);

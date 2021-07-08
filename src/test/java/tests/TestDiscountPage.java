@@ -20,7 +20,7 @@ public class TestDiscountPage extends Utils {
     @Test
     public void actionsTest() throws InterruptedException {
         discountBankPage.hoverOnLoans();
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         Assert.assertTrue(discountBankPage.isSpecialLoanButtonDisplayed());
     }
 

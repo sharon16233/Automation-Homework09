@@ -18,6 +18,7 @@ public class TestGuruPage extends Utils {
     public static String validPassword = "Guru99";
     public static String expectedBadUsernameText = "User-ID must not be blank";
     public static String expectedBadpasswordText = "Password must not be blank";
+    public static String expectedAlertText = "User or Password is not valid";
 
     @BeforeEach
     public void initPage() {
@@ -32,6 +33,7 @@ public class TestGuruPage extends Utils {
         guruPage.clickOnLoginButton();
 
         Assert.assertTrue(guruPage.isAlertPresent());
+        Assert.assertTrue(guruPage.isAlertTextCorrect(expectedAlertText));
         driver.switchTo().alert().dismiss();
     }
 
@@ -51,10 +53,11 @@ public class TestGuruPage extends Utils {
         guruPage.inputUsername(validUsername);
         guruPage.inputPassword(validPassword);
         guruPage.clickOnLoginButton();
+        Assert.assertTrue(guruPage.isLoginSuccessful());
 
-
+        guruPage.clickOnSEOButton();
+        guruPage.clickOnPageSixButton();
         Assert.assertTrue(guruPage.isGoToPageSixSuccessful());
-
     }
 
 }
