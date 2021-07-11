@@ -1,0 +1,6 @@
+pages\BasePage.class
+tests\TestGuruPage.class
+pages\GuruPage.class
+tests\TestDiscountPage.class
+utils\Utils.class
+pages\DiscountBankPage.class
